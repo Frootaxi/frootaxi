@@ -1,0 +1,86 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Accounts.master.cs" Inherits="FrootaxiMain.Accounts.Accounts" %>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <title>
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+    </title>
+    <link href="http://code.jquery.com/ui/1.10.3/themes/vader/jquery-ui.css" rel="stylesheet" type="text/css" />
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:300,400,700' rel='stylesheet' type='text/css' />
+    <link href="../css/typography.css" rel="stylesheet" type="text/css" />
+    <link href="../css/style.css" rel="stylesheet" type="text/css" />
+    <link href="../css/login.css" rel="stylesheet" type="text/css" />
+    <link href="../css/altLayout.css" rel="stylesheet" type="text/css" />
+
+    <script src="http://code.jquery.com/jquery-1.9.1.js" type="text/javascript"></script>
+    <script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js" type="text/javascript"></script>
+    <script type="text/javascript">
+        $(function () {
+            $(document).tooltip({
+                track: true,
+		        delay: 0,
+		        fade: 250
+            });
+        });
+    </script>
+    <script type="text/javascript">
+
+        var _gaq = _gaq || [];
+        _gaq.push(['_setAccount', 'UA-39444740-1']);
+        _gaq.push(['_setDomainName', 'frootaxi.com']);
+        _gaq.push(['_trackPageview']);
+
+        (function () {
+            var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+            ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+            var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+        })();
+
+    </script>
+    <!--[if !IE]>-->
+    <style type="text/css">
+	    body {
+	        font-size:16px;
+	    }
+    </style>
+    <!--<[endif]-->
+    <asp:ContentPlaceHolder ID="script" runat="server">
+    </asp:ContentPlaceHolder>
+</head>
+<body>
+    <form id="form1" runat="server">
+    <asp:ScriptManager ID="ScriptManager1" runat="server">
+    </asp:ScriptManager>
+    <div id="wrapper">
+        <asp:ContentPlaceHolder ID="promptContent" runat="server">
+        </asp:ContentPlaceHolder>
+		<div id="leftSide">
+            <noscript>
+                <asp:Label ID="noJavaScriptEnabled" runat="server" CssClass="error msg" style="display:block" Text="Please note that this site will not function properly without Javascript enabled."></asp:Label>
+            </noscript>
+			<div id="middlePanel" >
+				<div id="middleContent">
+					<fieldset id="toLeft">
+						<ul class="middleContent">
+							<li><a href="../Default.aspx"><img src="../images/logo-big.png" id="logo" alt="Frootaxi Logo" /></a></li>
+							<li><p>The On-demand taxi hailing service for Africa</p></li>
+							<li><p>Frootaxi is the new way to hail a taxi in West Africa. Take your trip in comfort the next time you go somewhere.</p></li>
+                        </ul>
+					</fieldset>
+					<fieldset id="toRight">
+						<ul class="middleContent">
+                            <asp:ContentPlaceHolder ID="toRightContent" runat="server">
+        
+                            </asp:ContentPlaceHolder>
+						</ul>
+					</fieldset>
+				</div><!--end of middleContent-->
+			</div><!--end of middlePanel-->
+		</div><!--end of leftSide-->
+    </div>
+    </form>
+</body>
+</html>
