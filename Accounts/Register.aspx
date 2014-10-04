@@ -3,36 +3,47 @@
 Register | Frootaxi
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="script" runat="server">
-<script src="../js/script.js" type="text/javascript"></script>
     <script type="text/javascript">
-        $('#promoOpener').click(function () {
-            $('#body_txtPromotionCode').show('slow', function () {
-                // Animation complete.
-            });
-        });
+        var x;
 
-        /*$('#Button2').on("click", function (e) {
-        $("#Button2").val("Please Wait");
-        $('#Button2').attr('disabled', 'disabled');
-        ClientScript.GetPostBackEventReference(bt1, null);
-        });*/
+        function displayHelpTip() {
+            jQ("#packages").fadeIn("fast");
+        }
 
-        var prm = Sys.WebForms.PageRequestManager.getInstance();
+        function hideHelpTip(_div) {
+            jQ("#packages").fadeOut("fast");
+        }
 
-        prm.add_endRequest(function () {
-            $("#packages").hide();
-            $("#packageOpener").hover(
+        function unloadAllPaymentTypes() {
+            jQ('#divMPower').hide();
+            jQ('#divExpressPay').hide();
+        }
 
-            function () {
-                $("#packages").slideToggle();
-            });
+        function loadMPowerDiv() {
+            unloadAllPaymentTypes();
+            jQ('#divMPower').fadeIn(600);
+        }
 
-            $('#promoOpener').click(function () {
-                $('#body_txtPromotionCode').show('slow', function () {
-                    // Animation complete.
-                });
-            });
-        });
+        function loadExpressPayDiv() {
+            unloadAllPaymentTypes();
+            jQ('#divExpressPay').fadeIn(600);
+        }
+
+        function getUserLocation() {
+            x = document.getElementById('<%=txtUserLocation.ClientID%>');
+
+            if (navigator.geolocation) {
+                navigator.geolocation.getCurrentPosition(showPosition);
+            } else {
+                x.innerHTML = "Geolocation is not supported by this browser.";
+            }
+        }
+
+        function showPosition(position) {
+            x.innerHTML = "Latitude: " + position.coords.latitude +
+            "&nbsp;Longitude: " + position.coords.longitude;
+        }
+
     </script>
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="promptContent" runat="server">
@@ -66,6 +77,7 @@ Register | Frootaxi
 </asp:Content>
 <asp:Content ID="Content7" ContentPlaceHolderID="rightSideContent" runat="server">
     <fieldset>
+        <legend></legend>
 		<ul>
 			<li class="title padding right">Register</li>
 			<li>
@@ -112,7 +124,7 @@ Register | Frootaxi
 		            </ContentTemplate>
 		        </asp:UpdatePanel>
 			</li>
-			<li>
+			<!--<li>
                 <asp:UpdatePanel ID="upRegion" runat="server">
 		            <ContentTemplate>
                         <asp:DropDownList CssClass="dropdownmenu" ID="ddlRegion" runat="server" 
@@ -120,77 +132,105 @@ Register | Frootaxi
 		                </asp:DropDownList>
                     </ContentTemplate>
 		        </asp:UpdatePanel>
-			</li>
+			</li>-->
+            <li class="title space">My Location</li>
+            <li class="style no-space">
+                Please provide your current location by clicking the button below.
+            </li>
+            <li>
+                <asp:UpdatePanel ID="upLocation" runat="server">
+		            <ContentTemplate>
+                        <asp:TextBox ID="txtUserLocation" runat="server" CssClass="textBox" placeholder="My location..."></asp:TextBox>
+                    </ContentTemplate>
+		        </asp:UpdatePanel>
+            </li>
+            <li>
+                <button type="button" onclick=" getUserLocation();" class="button">Show my location</button>
+            </li>
 		</ul>
 	</fieldset>
 	<fieldset>
+        <legend></legend>
 		<ul id="packages" class="ui-corner-all">
             <li>
             	<p class="title">BRONZE</p><span class="bubbleTip"></span>
-            	<p class="price">GHC30.00</p>
-            	<p class="description">The Bronze package includes <span class="freeText">15 trips</span> costing GHC10 and <span class="freeText">1 Free </span>trip costing GHC5.00</p>
+            	<p class="price">GHC50.00</p>
+            	<p class="description">The Bronze package includes <span class="freeText">1 Free </span>trip costing GHC10.00</p>
             </li>
             <li>
             	<p class="title">GOLD</p>
-            	<p class="price">GHC60.00</p>
-            	<p class="description">You get <span class="freeText">30 trips</span> costing GHC10 and <span class="freeText">2 Free </span>trips costing GHC5.00</p>
+            	<p class="price">GHC80.00</p>
+            	<p class="description">You get <span class="freeText">2 Free </span>trips costing GHC10.00</p>
             </li>
 			<li>
             	<p class="title">DIAMOND</p>
-            	<p class="price">GHC90.00</p>
-            	<p class="description">The Diamond package gives you <span class="freeText">45 trips</span> costing GHC10 and <span class="freeText">3 Free </span>trips costing GHC5.00</p>
+            	<p class="price">GHC110.00</p>
+            	<p class="description">The Diamond package gives you <span class="freeText">3 Free </span>trips costing GHC10.00</p><span class="container_close" onclick="hideHelpTip();">x</span>
             </li>
         </ul>
 	</fieldset>
 	<fieldset>
+        <legend></legend>
 		<ul id="packages2">
             <li>
             	<p class="title">BRONZE</p>
-            	<p class="price">GHC30.00</p>
-            	<p class="description">The Bronze package includes <span class="freeText">15 trips</span> costing GHC10 and <span class="freeText">1 Free </span>trip costing GHC5.00</p>
+            	<p class="price">GHC50.00</p>
+            	<p class="description">The Bronze package includes <span class="freeText">1 Free </span>trip costing GHC10.00</p>
             </li>
             <li>
             	<p class="title">GOLD</p>
-            	<p class="price">GHC60.00</p>
-            	<p class="description">You get <span class="freeText">30 trips</span> costing GHC10 and <span class="freeText">2 Free </span>trips costing GHC5.00</p>
+            	<p class="price">GH80.00</p>
+            	<p class="description">You get <span class="freeText">2 Free </span>trips costing GHC10.00</p>
             </li>
 			<li>
             	<p class="title">DIAMOND</p>
-            	<p class="price">GHC90.00</p>
-            	<p class="description">The Diamond package gives you <span class="freeText">45 trips</span> costing GHC10 and <span class="freeText">3 Free </span>trips costing GHC5.00</p>
+            	<p class="price">GHC110.00</p>
+            	<p class="description">The Diamond package gives you <span class="freeText">3 Free </span>trips costing GHC10.00</p>
             </li>
         </ul>
 	</fieldset>
 	<fieldset class="last-child">
+        <legend></legend>
 		<ul>
-			<li class="title padding">Payment Information</li>
+			<li class="title padding">Billing Information</li>
 			<li>
                 <asp:UpdatePanel ID="upPaymentPackage" runat="server">
 		            <ContentTemplate>
 	                    <asp:DropDownList CssClass="dropdownmenu" ID="ddlPaymentPackage" runat="server" DataTextField="name_capitalized" 
 		                    DataValueField="id">
-		                </asp:DropDownList><span id="packageOpener">[?]</span>
+		                </asp:DropDownList><span class="help" onclick="displayHelpTip();">[?]</span>
                     </ContentTemplate>
 		        </asp:UpdatePanel>
             </li>
             <li>
-                <asp:UpdatePanel ID="upPaymentType" runat="server">
+                <asp:UpdatePanel ID="upPaymentType" runat="server" UpdateMode="Always">
 		            <ContentTemplate>
 	                    <asp:DropDownList CssClass="dropdownmenu" ID="ddlPaymentType" runat="server" DataTextField="type_capitalized" 
-		                    DataValueField="id">
+		                    DataValueField="id" AutoPostBack="True" OnSelectedIndexChanged="ddlPaymentType_SelectedIndexChanged">
 		                </asp:DropDownList>
                     </ContentTemplate>
 		        </asp:UpdatePanel>
             </li>
-			<li>
-                <asp:UpdatePanel ID="UpdatePanel1" runat="server">
-		            <ContentTemplate>		                    
-		                <asp:TextBox CssClass="textBox account" placeholder="MPower Username/Mobile Number" ID="txtAccountNumber" 
-                            runat="server"></asp:TextBox>
-                    </ContentTemplate>
-		        </asp:UpdatePanel>
-			</li>
-			<li class="style textLink" id="mpowerLink"><a href="https://app.mpowerpayments.com/signup" target="_blank">I don't have an MPower account</a></li>
+            <li id="divMPower">
+                <ul>
+                    <li class="title padding">Pay with MPower</li>
+                    <li>
+                        <asp:UpdatePanel ID="UpdatePanel1" runat="server">
+		                    <ContentTemplate>		                    
+		                        <asp:TextBox CssClass="textBox account" placeholder="MPower Username/Mobile Number" ID="txtAccountNumber" 
+                                    runat="server"></asp:TextBox>
+                            </ContentTemplate>
+		                </asp:UpdatePanel>
+			        </li>
+			        <li class="style textLink" id="mpowerLink"><a href="https://app.mpowerpayments.com/signup" target="_blank">I don't have an MPower account</a></li>
+                </ul>
+            </li>
+            <li id="divExpressPay">
+                <ul>
+                    <li class="title padding">Pay with ExpressPay</li>
+                    <li><a href="http://sandbox.expresspaygh.com/api/submit.php" id="btnNow" class="button big" type="button">Expresspay</a></li>
+                </ul>
+            </li>
 			<li class="style">If you have a promotion code enter it below to claim it</li>
 			<li>
                 <asp:UpdatePanel ID="UpdatePanel2" runat="server">
@@ -203,6 +243,7 @@ Register | Frootaxi
 		</ul>
 	</fieldset>
 	<fieldset id="submitButtonStyle">
+        <legend></legend>
 		<ul>
 			<li><p>By clicking register, I accept the <a href="../Information/Terms.aspx" id="terms">terms</a> of the Frootaxi Service.</p></li>
 			<li>

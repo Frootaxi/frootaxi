@@ -8,25 +8,25 @@
     <asp:ContentPlaceHolder ID="head" runat="server">
     </asp:ContentPlaceHolder>
     </title>
-    <link href="http://code.jquery.com/ui/1.10.3/themes/vader/jquery-ui.css" rel="stylesheet" type="text/css" />
     <link href='http://fonts.googleapis.com/css?family=Open+Sans:300,400,700' rel='stylesheet' type='text/css' />
-    <link href="../css/typography.css" rel="stylesheet" type="text/css" />
-    <link href="../css/style.css" rel="stylesheet" type="text/css" />
-    <link href="../css/login.css" rel="stylesheet" type="text/css" />
-    <link href="../css/altLayout.css" rel="stylesheet" type="text/css" />
-
-    <script src="http://code.jquery.com/jquery-1.9.1.js" type="text/javascript"></script>
-    <script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js" type="text/javascript"></script>
+    <script type="text/javascript" src="http://code.jquery.com/jquery-1.11.1.js"></script>
+    <script type="text/javascript" src="http://code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
+    <link type="text/css" rel="stylesheet" href="css/jquery-ui.css" />
+    <link type="text/css" rel="stylesheet" href="css/jquery-ui.theme.css" />
+    <script type="text/javascript" src="js/script.js"></script>
+    <link type="text/css" rel="stylesheet" href="css/typography.css" />
+    <link type="text/css" rel="stylesheet" href="css/style.css" />
+    <link type="text/css" rel="stylesheet" href="../css/login.css" />
+    <link type="text/css" rel="stylesheet" href="../css/altLayout.css" />
+    <script>var jQ = jQuery.noConflict();</script>
     <script type="text/javascript">
-        $(function () {
+        jQ(function ($) {
             $(document).tooltip({
                 track: true,
 		        delay: 0,
 		        fade: 250
             });
         });
-    </script>
-    <script type="text/javascript">
 
         var _gaq = _gaq || [];
         _gaq.push(['_setAccount', 'UA-39444740-1']);

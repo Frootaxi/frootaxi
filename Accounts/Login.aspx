@@ -36,36 +36,41 @@ Sign in | Frootaxi
     <li><p>Don't have an account? Click here to <a href="Register.aspx">register</a></p></li>
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="rightSideContent" runat="server">
-    <fieldset class="padding2">
-	    <ul>
-		    <li class="title padding"><span class="imgContainer lpi1"></span>Hail a Taxi Conveniently</li>
-		    <li>
-			    <p class="landingPageText">
-				    Request for a taxi from the comfort of your home, office or anywhere in town. Cut out the hassle of standing in the sun or by the roadside to hail a cab. With a click or tap of a button we will deliver a taxi to you within minutes.
-			    </p>
-		    </li>
-	    </ul>
-    </fieldset>
-    <fieldset class="padding2">
-	    <ul>
-            <li class="title padding"><span class="imgContainer  lpi2"></span>Clean and Safe Taxi Cabs</li>
-            <li>
-                <p class="landingPageText">
-            	    All Frootaxi drivers hold valid licenses and are vetted as added measure for your safety. We provide clean, fairly new to brand new taxi cabs with amenities such as air conditioning. You are always assured a comfortable and safe ride to your destination.
-                </p>
-            </li>
-        </ul>
-    </fieldset>
-    <fieldset class="last-child">
-	    <ul>
-            <li class="title padding"><span class="imgContainer  lpi3"></span>Standard pricing and hassle-free payment</li>
-            <li>
-                <p class="landingPageText">
-            	    Our prices are based on market standards which mean you pay the right price for your journey every time. We have daily rates as well as metered charging for journeys without a specified destination. Payments are made either with cash or electronically through your bank account, credit card or mobile money account.
-                </p>
-            </li>
-        </ul>
-    </fieldset>
+    <div id="serviceDetails">
+	    <fieldset class="padding2">
+            <legend></legend>
+		    <ul>
+			    <li class="title padding"><span class="imgContainer lpi1"></span>Our quality promise</li>
+			    <li>
+				    <p class="landingPageText">
+					    We provide clean, fairly new to brand new taxi cabs. All Frootaxi drivers hold valid licenses and are vetted as added measure for your safety. You are always assured a comfortable and safe ride to your destination.
+				    </p>
+			    </li>
+		    </ul>
+	    </fieldset>
+	    <fieldset class="padding2">
+            <legend></legend>
+		    <ul>
+                <li class="title padding"><span class="imgContainer  lpi2"></span>Hail a taxi conveniently</li>
+                <li>
+            	    <p class="landingPageText">
+            		    Request for a taxi from the comfort of your home, office or anywhere in town. At a click or tap of a button we will deliver a taxi to you within minutes. 
+            	    </p>
+                </li>
+            </ul>
+	    </fieldset>
+	    <fieldset class="last-child">
+            <legend></legend>
+		    <ul>
+                <li class="title padding"><span class="imgContainer  lpi3"></span>You pay the right price</li>
+                <li>
+            	    <p class="landingPageText">
+            		    We have daily rates as well as metered charging for journeys without a specified destination. We accept cash as well as all forms of electronic payment including credit/debit cards and mobile money.
+                    </p>
+                </li>
+            </ul>
+	    </fieldset>
+    </div>
     <fieldset id="submitButtonStyle">
 	    <ul>
 		    <li id="footer"><p>Copyright &copy; 2013  Frootaxi , All rights reserved.</p></li>

@@ -27,7 +27,26 @@ body{
     right:0;
 }
 
-#middleContent, #bottomBg, #top, #packages {
+#rightSideContent_UpdatePanel4 ul li{
+    margin: 8px 0px;
+    font-size: 13px;
+}
+
+#rightSideContent_UpdatePanel4 ul li span {
+    padding: 0.25em;
+}
+
+#divDuration
+{
+    display:none;
+    /*padding-bottom: 15px;*/
+}
+
+#packages {
+    background-color: rgba(233, 233, 233, 0.72);
+}
+
+#middleContent, #bottomBg, #top {
     background-color: rgba(0, 0, 0, 0.72);
     color: rgba(0, 0, 0, 0.72);
 }
@@ -143,8 +162,20 @@ body{
 	background-position:-2.25em -1.125em !important;
 }
 
-#mpowerLink {
-	margin:0.71429em 0 2em 0;
+.style {
+	margin: 2em 0;
+}
+
+.space {
+    margin: 23% 0 5% 0;
+}
+
+.no-space {
+    margin-top:0 !important;
+}
+
+#divMPower, #divExpressPay {
+    display:none;
 }
 
 .ui-dialog {
@@ -186,30 +217,10 @@ body{
     z-index:9999;
 }
 
-.pleaseWait {
-    background:#fff url('../images/please_wait.gif') center center no-repeat;
-    width:100%;
-    height:100%;
-    opacity:1.0 !important;
-    z-index:99999;
-}
-
 .cursor
 {
     cursor:not-allowed;
 }
-
-.ui-timepicker-div, .ui-widget-header { margin-bottom: 8px; }
-.ui-timepicker-div dl { text-align: left; }
-.ui-timepicker-div dl dt { float: left !important; clear:left; padding: 0 0 0 5px; width:50px !important; }
-.ui-timepicker-div dl dd, .ui-datepicker-calendar th{ margin: 0 10px 10px 45%; }
-.ui-timepicker-div td { font-size: 90%; }
-.ui-tpicker-grid-label { background: none; border: none; margin: 0; padding: 0; }
-
-.ui-timepicker-rtl{ direction: rtl; }
-.ui-timepicker-rtl dl { text-align: right; padding: 0 5px 0 0; }
-.ui-timepicker-rtl dl dt{ float: right; clear: right; }
-.ui-timepicker-rtl dl dd { margin: 0 45% 10px 10px; }
 
 .tooltip{
     position:absolute;
@@ -257,12 +268,9 @@ body{
     opacity:1 !important;
 }
 
-.trip_confirmation_text {
-    width:40%;
+.trip_confirmation_text{
     margin: 10px 0 0 10px;
     float:right;
-    color:#000;
-    font-size:13px;
 }
 
 #map-canvas-snapshot {
@@ -273,10 +281,35 @@ body{
 }
 
 .trip_cost {
-    margin:40px 0 0 50px;
+    margin:33px 0 0 50px;
     background:none;
     width:150px !important;
     font-size:31px;
+}
+
+.trip_dets li, .trip_confirmation_text {
+    width:45%;
+    color:#000;
+    font-size:13px;
+    display: inline-block;
+}
+
+.trip_dets li {
+    margin:0 0 0 18px;
+}
+
+.trip_dets li label {
+    float: left;
+    font-weight:600;
+}
+
+.trip_dets li input {
+    float: right;
+}
+
+.trip_dets li input, .trip_dets li label {
+    margin: 0px;
+    line-height: 20px;
 }
 
 .search_address {
@@ -290,8 +323,38 @@ body{
 	z-index:999;
 }
 
+#tripSummary {
+    position:absolute;
+	background-color:rgba(0, 0, 0, 0.22);
+	width: 41.6%;
+	height:7.875em;
+	padding:0.71429em;
+	top:2%;
+	right:1.2%;
+	z-index:999;
+    font-size:11px;
+    color:#F2C717;
+}
+
+.tripSummaryText {
+    background-color:#222;
+}
+
+.big {
+    padding: 10px !important;
+    color: #fff !important;
+}
+
+.adjustMargin {
+    margin:20px 0 30px 0 !important;
+}
+
 .ui-autocomplete {
     width: 20%;
+}
+
+.ui-accordion-content {
+    background:none !important;
 }
 	
 .search {
@@ -348,7 +411,41 @@ body{
     margin: 0
 }
 
-#payg_fare {
+.pos_rel {
+    position:relative;
+}
+
+.container_close {
+    font-weight:600;
+    padding:0 !important;
+    position: absolute;
+    right: 10px;
+    top: 6px;
+    cursor:pointer;
+}
+
+#divHelpTip, #divHelpTip1, #divHelpTip2 {
+    display:none;
+    position:absolute;
+    z-index:9999;
+    /*width:180px;*/
+    left:135px;
+    top:-8px;
+    padding:21px 15px 10px 15px !important;
+    background-color:#000;
+}
+
+#divHelpTip2 {
+    left: 190px !important;
+    right: -55px;
+}
+
+.helpText {
+    color:#fff;
+    font-size:12px;
+}
+
+#payg_details {
     display:none; /* Hide the DIV */
     position:absolute;  
     _position:absolute; /* hack for internet explorer 6 */ 
@@ -363,7 +460,7 @@ body{
     border-radius: 3px;
 }
 
-#payg_fare h3 {
+#payg_details h3 {
     line-height: 43px;
     border-bottom: 1px solid #000;
     color:#000;
@@ -411,6 +508,33 @@ a{
     cursor: pointer; 
 }
 
+.help {
+	position:absolute;
+	margin:0 2%;
+    padding:0 !important;
+	cursor:help;
+}
+
+.bubbleTip {
+		height:2em;
+		width:2em;
+		display:block;
+		right:136px;
+		overflow:hidden;
+		margin:-1.3em 0px 0px 21.13em;
+		position:absolute;
+		background:transparent url('../images/lBubbleTip.png') no-repeat 0 0;
+	}
+
+#rightSideContent_UpdatePanel7 select {
+    width: 49% !important;
+    margin: 0 0 0.71429em 0;
+    height: 2.875em;
+    padding: 0.71429em;
+    background-color: #f6d758 !important;
+    position: relative;
+}
+
 /* This is for the positioning of the Close Link */
 #popupBoxClose {
     font-size:20px;  
@@ -427,6 +551,10 @@ a{
     color:#F2C717;
 }
 
+.small_width {
+    width: 30.3% !important;
+}
+
 #noJavaScriptEnabled {
     display:none;
 }
@@ -437,7 +565,7 @@ a{
 
 #footer{
 	clear:both;
-	margin:60px auto 10px auto;
+	/*margin:60px auto 10px auto;*/
 	height:100%;
 	width:100%;
 }
@@ -458,30 +586,32 @@ a{
 		margin-right:1.25em;
 		padding:0.75em 1.875em 0.75em 1.875em;
 	}
+
+    .container_close {
+        color:#000;
+        font-size:15px;
+    }
 	
 	p.price {
 		font-size:1.5em;
 		font-weight:900;
 		width:100%;
+        margin:0 auto 0.0625em auto;
 	}
 	
 	#packages ul {
 		width:18em;
 	}
 	
-	#packageOpener {
-		position:absolute;
-		margin:2% 2% 0 2%;
-		cursor:pointer;
-	}
-	
 	#packages2 {
 		display:none;
 	}
 	
-	#packages li .bubbleTip {
+	#packages li .bubbleTip{
 		height:2em;
 		width:2em;
+        top: 40px;
+        right:-24px;
 		display:block;
 		float:right;
 		overflow:hidden;
@@ -489,6 +619,17 @@ a{
 		position:absolute;
 		background:transparent url('../images/bubbleTip.png') no-repeat 0 0;
 	}
+
+    /*.bubbleTip {
+		height:2em;
+		width:2em;
+		display:block;
+		right:170px;
+		overflow:hidden;
+		margin:-1.3em 0px 0px 21.13em;
+		position:absolute;
+		background:transparent url('../images/lBubbleTip.png') no-repeat 0 0;
+	}*/
 }
 
 @media only screen and (min-width: 1025px) and (max-width: 1224px) {
@@ -514,11 +655,39 @@ a{
 		width:18em;
 	}
 	
-	#packageOpener {
+	.help { /*Might be related to register packages list and default.aspx trip type tips*/
 		position:absolute;
-		margin:0.5% 0.5% 0 0.5%;
+		/*margin:0.5% 0.5% 0 0.5%;*/
+        padding:0 2% !important;
 		cursor:pointer;
 	}
+
+    #divHelpTip, #divHelpTip1 {
+        right: -35px;
+    }
+
+    #divHelpTip2 {
+        left: -150px !important;
+        right: 235px;
+    }
+
+    #divHelpTip .bubbleTip, #divHelpTip1 .bubbleTip {
+        left: -295px !important;
+        right: 25px;
+    }
+
+    #divHelpTip2 .bubbleTip {
+        height: 2em;
+        width: 2em;
+        display: block;
+        left: -147px !important;
+        right: 235px;
+        overflow: hidden;
+        margin: -1.3em 0px 0px 21.13em;
+        position: absolute;
+        background: url('../images/BubbleTip.png') no-repeat scroll 0px 0px transparent;
+        top: 25px;
+    }
 	
 	#packages2 {
 		display:none;
@@ -557,7 +726,7 @@ a{
 
 @media only screen and (max-width: 1024px){
 	
-	#packageOpener {
+	.help {
 		display:none;
 	}
 	
@@ -569,274 +738,302 @@ a{
 
 /* Screens 1225px and above */
 
-@media screen and (min-width : 1225px){
-	#wrapper{
-		margin:0 auto;
-		max-width:76.5em;
-		height:100%;
-	}
-	
-	p{
-		width:21.875em;
-		margin:0 auto;
-		margin-bottom:0.9375em;
-	}
-	
-	#leftSide{
-		width:50em; /*800px*/
-		height:100%;
-		float:left;
-		clear:left;
-		position:relative;
-	}
-	
-	#middleContent{
-		padding:0;
-		height:20em;
-		width:100%;
-		margin: 7.125em 0 0.3125em 0;
-	}
-	
-	#toLeft { /*Context is font=16px*/
-		width:26em;
-		height:20em;
-		padding:0.625em 0.725em 0px 0.725em;
-		float:left;
-	}
-	
-	.img {
-		max-width:100%;
-		-ms-interpolation-mode: bicubic;
-	}
+@media screen and (min-width : 1225px) {
+    #wrapper {
+        margin: 0 auto;
+        max-width: 76.5em;
+        height: 100%;
+    }
 
-	#logo{
-		height:6.3125em;
-		display:block;
-		margin:0.625em auto 0.125em auto;
-	}
-	
-	#appIcons ul{
-		width: 10.9375em;
-		margin:0 auto;
-	}
-	
-	#appIcons li{
-	    display: block;
-		float: left;
-		height:2.625em;
-		line-height:3.8125em;
-	}
-	
-	.link{
-	    display:block;
-	    margin:0px 0.75em;
-	    width: 1.1875em;
-	    height:1.3125em;
-	    overflow:hidden;
-	    background:transparent url('../images/appSprite.png')no-repeat 0 0;
-	}
-	
-	#toRight{/*Context font=20px*/
-		width:24em;
-		height:20em;
-		margin:0;
-		padding: 0;
-		float:right;
-	}
-	
-	.middleContent {
-	    min-height:12.1875em !important;
-	    position:relative;
-	    width:100%;
-	}
-	
-	#toRight li{
-		width: 100%;
-	    min-height: 2.5em;
-	    padding: 0.45em 0.25em;
-	    float:right;
-	}
-	
-	.defaultButtons {
-		background-color: rgba(245, 205, 46, 0.82);
-		text-align:center;
-		font-size: 0.9em;
-		width: 15.275em !important;
-		height:2.5em;
-		margin:0 1.75em 0.55em 0;
-	}
-	
-	.defaultButtons:first-child {
-	    margin-top: 4em;
-	}
-	    
-	.defaultButtons:last-child {
-	    margin:0 1.75em 0 0;
-	    height:3.5em;
-	}
-	
-	.alt_settings {
-	    height:2.5em !important;
-	    width:100% !important;
-	    margin-top:1.5em !important;
-	}
-	
-	.defaultButtons a {
-		text-align:center;
-	}
-	
-	#socialMediaLinks ul{
-		width: 10.9375em; /*26.71875em*/
-		height:1.125em;
-		margin:1.625em auto 0 auto;
-	}
-		
-	#bottomBg{/*Context font=19px?*/
-		min-width:43.8em;
-		margin: 0;
-	    padding: 0.263em 0.526em;
-	}
-	
-	#bottom li{
-		display: block;
-		float: left;
-	}
-	
-	#bottomLeft{
-		display: block;
-		float: left;
-	}
-	
-	#bottomLeft li{
-		padding:0.526em 2em 0.263em 0.526em;
-	}
-	
-	.bottomRight{
-		display: block;
-		float: right;
-		padding-right:2.5%;
-	}
-	
-	.bottomRight li {
-		padding:0.526em 0 0.263em 2em;
-	}
-	
-	.bottomRight li:first-child {
-		padding-left: 0;
-	}
-	
-	.bottomRight li:last-child {
-		padding-right: 0;
-	}
-	
-	.bottomRight li p {
-	    margin:0;
-	    padding:0;  
-	}
-	
-	.bottomRight li a{
-		text-align:center;
-	}
-	
-	#rightSide{/*Context 16px*/
-		width:22.875em;
-		float: right;
-		clear:right;
-		margin:0 0 0 2.8125em;
-		height:100% !important;
-		padding:1.875em 1.875em 0.625em 1.875em;
-		position:relative;
-		background: transparent url('../images/bg_leather.png') repeat;
-	}
-	
-	.register ul{
-		width:17.3125em;
-		margin:0.625em auto;
-	}
-	
-	.padding{/*Contex 20px*/
-		padding-bottom:0.5em;
-	}
-	
-	select, input, radio {
-		outline:none;
-	}
-	
-	.textBox, .dropdownmenu, #frmForgotPassword .textBox {/*context 14px*/
-		margin:0 0 0.71429em 0;
-		width:100%;
-		height:2.875em;
-		padding:0.71429em;
-		background-color: #f6d758 !important;
-		position:relative;
-	}
-	
-	/*For dropdown arrow*/
-	
-	.dropdownmenu:after{
-		content:no-close-quote;
-		position:absolute;
-		top:0;
-		right:0;
-		bottom:0;
-		background: transparent;
-	}
-	
-	.textBox.account{
-		margin:0;
-	}
-	
-	#AccountExpirationRow {/*Context 20px*/
-		height:2.875em;
-		width:100%;
-		position:relative;
-		display:none;
-	}
-	
-	#AccountExpirationRow ul {
-		width:100%;
-		height:100%;
-	}
-	
-	#AccountExpirationRow li {
-		display: block;
-		float: left;
-		height:100%;
-		width:33%;
-	}
-	
-	#AccountExpirationRow .ddlTextStyle{
-		margin:0 1% 0 0;
-	}
-	
-	.ddlStyle {
-		width:100%;
-		height:100%;
-		padding:0.625em;
-		background-color: #f6d758;
-	}
-	
-	#AccountExpirationRow li:last-child {
-		margin:0 0 8% 0;
-	}
-	
-	fieldset#submitButtonStyle {
-		width:100%;
-		min-height:100%;
-		clear:both;
-	}
-	
-	fieldset#submitButtonStyle ul {
-		max-width:100%;
-		max-height:100%;
-	}
-	
-	.button{
-		padding:3% 0;
-		margin:5% 0 23% 0;
-		min-width:100%;
-		/*min-height:100%;*/
-	}
+    p {
+        width: 21.875em;
+        margin: 0 auto;
+        margin-bottom: 0.9375em;
+    }
+
+    #leftSide {
+        width: 50em; /*800px*/
+        height: 100%;
+        float: left;
+        clear: left;
+        position: relative;
+    }
+
+    #middleContent {
+        padding: 0;
+        height: 20em;
+        width: 100%;
+        margin: 7.125em 0 0.3125em 0;
+    }
+
+    #toLeft { /*Context is font=16px*/
+        width: 24.8em;
+        height: 20em;
+        padding: 0.625em 0.725em 0px 0.725em;
+        float: left;
+    }
+
+    .img {
+        max-width: 100%;
+        -ms-interpolation-mode: bicubic;
+    }
+
+    #logo {
+        height: 6.3125em;
+        display: block;
+        margin: 0.625em auto 0.125em auto;
+    }
+
+    #appIcons ul {
+        width: 10.9375em;
+        margin: 0 auto;
+    }
+
+    #appIcons li {
+        display: block;
+        float: left;
+        height: 2.625em;
+        line-height: 3.8125em;
+    }
+
+    .link {
+        display: block;
+        margin: 0px 0.75em;
+        width: 1.1875em;
+        height: 1.3125em;
+        overflow: hidden;
+        background: transparent url('../images/appSprite.png')no-repeat 0 0;
+    }
+
+    #toRight { /*Context font=20px*/
+        width: 24em;
+        height: 20em;
+        margin: 0;
+        padding: 0;
+        float: right;
+    }
+
+    .middleContent {
+        min-height: 12.1875em !important;
+        position: relative;
+        width: 100%;
+    }
+
+    #toRight li {
+        width: 100%;
+        min-height: 2.5em;
+        padding: 0.45em 0.25em;
+        float: right;
+    }
+
+    .defaultButtons {
+        background-color: rgba(245, 205, 46, 0.82);
+        text-align: center;
+        font-size: 0.9em;
+        width: 15.275em !important;
+        height: 2.5em;
+        margin: 0 1.75em 0.55em 0;
+    }
+
+        .defaultButtons:first-child {
+            margin-top: 4em;
+        }
+
+        .defaultButtons:last-child {
+            margin: 0 1.75em 0 0;
+            height: 3.5em;
+        }
+
+    .alt_settings {
+        height: 2.5em !important;
+        width: 100% !important;
+        margin-top: 1.5em !important;
+    }
+
+    .defaultButtons a {
+        text-align: center;
+    }
+
+    #socialMediaLinks ul {
+        width: 10.9375em; /*26.71875em*/
+        height: 1.125em;
+        margin: 1.625em auto 0 auto;
+    }
+
+    #bottomBg { /*Context font=19px?*/
+        min-width: 43.8em;
+        margin: 0;
+        padding: 0.263em 0.526em;
+    }
+
+    #bottom li {
+        display: block;
+        float: left;
+    }
+
+    #bottomLeft {
+        display: block;
+        float: left;
+    }
+
+        #bottomLeft li {
+            padding: 0.526em 2em 0.263em 0.526em;
+        }
+
+    .bottomRight {
+        display: block;
+        float: right;
+        padding-right: 2.5%;
+    }
+
+        .bottomRight li {
+            padding: 0.526em 0 0.263em 2em;
+        }
+
+            .bottomRight li:first-child {
+                padding-left: 0;
+            }
+
+            .bottomRight li:last-child {
+                padding-right: 0;
+            }
+
+            .bottomRight li p {
+                margin: 0;
+                padding: 0;
+            }
+
+            .bottomRight li a {
+                text-align: center;
+            }
+
+    #rightSide { /*Context 16px*/
+        width: 22.875em;
+        float: right;
+        clear: right;
+        margin: 0 0 0 2.8125em;
+        height: 100%;
+        padding: 1.875em 1.875em 0.625em 1.875em;
+        position: relative;
+        background: transparent url('../images/bg_leather.png') repeat;
+    }
+
+    .adjustHeight {
+        height: 672px !important;
+    }
+
+    .small_height {
+        height:66px !important;
+    }
+
+    .register ul {
+        width: 17.3125em;
+        margin: 0.625em auto;
+    }
+
+    .fixed_height {
+        height:500px;
+        width:100%;
+    }
+
+    .padding { /*Contex 20px*/
+        padding-bottom: 0.5em;
+    }
+
+    select, input, radio {
+        outline: none;
+    }
+
+    .textBox, .dropdownmenu, #frmForgotPassword .textBox { /*context 14px*/
+        margin: 0 0 0.71429em 0;
+        width: 100%;
+        height: 2.875em;
+        padding: 0.71429em;
+        background-color: #f6d758 !important;
+        position: relative;
+    }
+
+    /*.small_width {
+        width:30.3% !important;
+    }*/
+
+        /*For dropdown arrow*/
+
+        .dropdownmenu:after {
+            content: no-close-quote;
+            position: absolute;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            background: transparent;
+        }
+
+        .textBox.account {
+            margin: 0;
+        }
+
+    #AccountExpirationRow { /*Context 20px*/
+        height: 2.875em;
+        width: 100%;
+        position: relative;
+        display: none;
+    }
+
+        #AccountExpirationRow ul {
+            width: 100%;
+            height: 100%;
+        }
+
+        #AccountExpirationRow li {
+            display: block;
+            float: left;
+            height: 100%;
+            width: 33%;
+        }
+
+        #AccountExpirationRow .ddlTextStyle {
+            margin: 0 1% 0 0;
+        }
+
+    .ddlStyle {
+        width: 100%;
+        height: 100%;
+        padding: 0.625em;
+        background-color: #f6d758;
+    }
+
+    #AccountExpirationRow li:last-child {
+        margin: 0 0 8% 0;
+    }
+
+    fieldset#submitButtonStyle {
+        width: 100%;
+        min-height: 100%;
+        clear: both;
+    }
+
+        fieldset#submitButtonStyle ul {
+            max-width: 100%;
+            max-height: 100%;
+        }
+
+    .button {
+        padding: 3% 0;
+        margin: 5% 0 23% 0;
+        min-width: 100%;
+        /*min-height:100%;*/
+    }
+
+    .btn_small {
+        min-width:50% !important;
+        margin:0 !important;
+    }
+
+    .shift_down {
+        /*margin-top: 67px;
+        margin-bottom: 1% !important;*/
+        margin:0 !important;
+    }
 }
 
 /*Tablets (iPads, Android, Windows) and small screens */
@@ -1340,6 +1537,9 @@ a{
 	select, input, radio {
 		outline:none;
 	}
+    .small_width {
+        width: 29.6% !important;
+    }
 	
 	.textBox, .dropdownmenu {/*context 14px*/
 		margin:0 0 0.71429em 0;

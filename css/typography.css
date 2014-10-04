@@ -99,7 +99,11 @@ a{
 	text-align:right;
 }
 
-.title, .title2, #footer, #packageOpener {
+.help {
+    font-weight:600;
+}
+
+.title, .title2, #footer, .help {
 	color: #392903;
 	text-shadow: 0 0 0 transparent, 1px 1.4px 1px #E4C239;
     filter: dropshadow(color=#E4C239, offx=1, offy=1.4);
@@ -181,6 +185,12 @@ a{
 
 .title, .title2 {
 	font-weight:lighter;
+}
+
+#packages .title {
+    font-size:19px;
+    color: #B99314;
+    margin:0.9375em auto 0.0625em auto;
 }
 
 #packages, #packages2 .title, .freeText, #packages p, #packages2 p {
@@ -323,16 +333,18 @@ legend {
 	}
 	
 	#packages p, #packages title {
-		color:#9a9a9a;
+		color:#261A1A;
 		font-weight:lighter;
 		text-shadow: 0 0 0 transparent, 0 0 0 transparent;
         filter: dropshadow(color=transparent, offx=0, offy=0);
 	}
-	
-	.freeText {
-		color:#cdac27;
-		text-shadow: 0;
-	}
+
+    .freeText {
+        color: #B99314;
+        text-shadow: 0;
+        background-color: rgba(0, 0, 0, 0.71);
+        padding: 0px 0.2652em;
+    }
 
 }
 

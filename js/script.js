@@ -1,5 +1,5 @@
 ﻿// Enable the visual refresh
-google.maps.visualRefresh = true;
+//google.maps.visualRefresh = true;
 
 var infoWindowLocation;
 var icon_image;
@@ -173,10 +173,11 @@ function initializeUserJourney() {
     directionsDisplay = new google.maps.DirectionsRenderer({ polylineOptions: journeypoly, suppressMarkers: true });
     directionsDisplay.setMap(journeymap);
 
-    google.maps.event.trigger(journeymap, 'resize');
+    //google.maps.event.trigger(journeymap, 'resize');
 }
 
 function calcRoute(_markers, _map) {
+    //alert("calcRoute() entered");
     var waypts = [];
     var _start = _markers[0];
     var _stop = _markers[_markers.length - 1];
@@ -216,7 +217,7 @@ function calcRoute(_markers, _map) {
         if (status == google.maps.DirectionsStatus.OK) {
             directionsDisplay.setDirections(response);
             var route = response.routes[0];
-
+            //alert(route.legs[i].start_address);
             for (var i = 0; i < _markers.length; i++) {
                 if (_markers[i] === _start) {
                     addInfoWindow('Pick up', _map, setMarker(_markers[i], _map));
@@ -271,12 +272,12 @@ function initializePAYGMap() {
     var mapOptions = {
         zoom: 11,
         center: pickMeHere,
-        zoomControl: true,
+        /*zoomControl: true,
         zoomControlOptions: {
             style: google.maps.ZoomControlStyle.SMALL,
             position: google.maps.ControlPosition.RIGHT_CENTER
-        },
-        draggable: true,
+        },*/
+        draggable: false,
         disableDefaultUI: true
     };
     map2 = new google.maps.Map(document.getElementById('map-canvas-2'), mapOptions);
@@ -286,28 +287,12 @@ function initializePAYGMap() {
     journeypath = new google.maps.Polyline({
         strokeColor: '#cd8c0e',
         strokeOpacity: 1.0,
-        strokeWeight: 3/*,
-        editable: false*/
+        strokeWeight: 3
     });
     journeypath.setMap(map2);
 
     directionsDisplay = new google.maps.DirectionsRenderer({ polylineOptions: journeypath, suppressMarkers: true });
     directionsDisplay.setMap(map2);
-
-    loadCoords();
-
-    calcRoute(allLatLng, map2);
-    google.maps.event.trigger(map2, 'resize');
-
-    map2.setCenter(getBoundsForPoly(journeypath).getCenter());
-    map2.fitBounds(getBoundsForPoly(journeypath));
-
-    icon_image = 'images/taxi.png';
-    for (i = 0; i < allLatLng.length; i++) {
-        if (i > 0 && i < allLatLng.length - 1) {
-            setMarker(allLatLng[i], map2);
-        }
-    }
 }
 
 function addLatLng2(latlng) {
@@ -403,6 +388,7 @@ function addInfoWindow(text, _map, _marker) {
 
 function loadCoords() {
     coords = document.getElementById('toRightContent_txtTripCoordinates').value;
+    //alert(coords);
     var array = coords.split('),(');
 
     var arr2;
@@ -426,11 +412,10 @@ function loadCoords() {
         }
     }
 
-    /*poly.binder = new MVCArrayBinder(poly.getPath());
-    foreach(var ll in allLatLng){
-        path2 = journeypath.getPath();
-        path2.push(ll);
-    }*/
+    for (var i = 0; i < allLatLng.length; i++) {
+        path = journeypath.getPath();
+        path.push(allLatLng[i]);
+    }
 }
 
 function addUserJourney() {
@@ -454,6 +439,34 @@ function addUserJourney() {
     }
 }
 
+function addPaygJourney() {
+    loadCoords();
+
+    timeOut();
+    google.maps.event.trigger(map2, 'resize');
+
+    map2.setCenter(getBoundsForPoly(journeypath).getCenter());
+    map2.fitBounds(getBoundsForPoly(journeypath));
+
+    for (i = 0; i < allLatLng.length; i++) {
+        if (i > 0 && i < allLatLng.length - 1) {
+            //setMarker(allLatLng[i], map2);
+            var location = allLatLng[i];
+
+            var marker = new google.maps.Marker({
+                position: location,
+                draggable: false,
+                icon: icon_image,
+                map: map2
+            });
+        }
+    }
+}
+
+function timeOut() {
+    setTimeout(6000, calcRoute(allLatLng, map2));
+}
+
 function getJourneyBounds() {
     bounds = new google.maps.LatLngBounds();
     for (var i = 0; i < markers.length; i++) {
@@ -462,13 +475,8 @@ function getJourneyBounds() {
     return bounds;
 }
 
-function loadPopupBox() { // To Load the Popupbox
-    document.getElementById('payg_fare').className = 'show';
-    document.getElementById('divCover').className = 'overlay cursor fixed';
-}
-
 function unloadPopupBox() { // To Unload the Popupbox
-    document.getElementById('payg_fare').className = 'hide';
+    document.getElementById('payg_details').className = 'hide';
     document.getElementById('divCover').className = '';
     document.getElementById('txtCost').className = "cu_input cu_alt msg";
 }
