@@ -83,7 +83,7 @@
 				<div id="middleContent">
 					<fieldset id="toLeft">
 						<ul class="middleContent">
-							<li><a href="../Default.aspx"><img src="images/logo-big.png" id="logo" alt="Frootaxi Logo" class="img" /></a></li>
+							<li><a href="../Default.aspx"><img src="../images/logo-big.png" id="logo" alt="Frootaxi Logo" class="img" /></a></li>
                             <div id="appIcons">
 							    <ul>
 								    <li><a href="#" class="link" id="android" title="Coming Soon"></a></li>
