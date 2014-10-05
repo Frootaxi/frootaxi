@@ -919,7 +919,7 @@ a{
     }
 
     .adjustHeight {
-        height: 672px !important;
+        /*height: 672px !important;*/
     }
 
     .small_height {
@@ -1842,6 +1842,7 @@ a{
 		clear:both;
 		padding:2%;
 		background: transparent url('../images/bg_leather.png') repeat;
+        height: 57em !important;/*Might not require this line as not all <400px elements converted from mobile viewport*/
 	}
 		
 	.register ul {
